@@ -19,6 +19,8 @@ RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash
 RUN mkdir /.ssh
 ENV PATH /google-cloud-sdk/bin:$PATH
 
+RUN echo "Europe/Berlin" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+
 CMD ["/bin/bash"]
 
 ENV HOME /root
