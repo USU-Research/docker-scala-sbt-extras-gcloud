@@ -1,14 +1,19 @@
-FROM openjdk:8u111-jdk
+FROM openjdk:8-jdk-slim
 
 MAINTAINER USU Software AG
 
 RUN \
+  apt-get update && \
+  apt-get install -y -qq --no-install-recommends wget unzip python openssh-client python-openssl git-core jq curl vim && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/* 
+
+RUN \
   curl -s https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt > /usr/local/bin/sbt && chmod 0755 /usr/local/bin/sbt && \
-  sbt about -sbt-create
+  sbt about -sbt-create -sbt-version 1.0.3 -212
 
 # Prepare the image.
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y -qq --no-install-recommends wget unzip python php5-mysql php5-cli php5-cgi  openssh-client python-openssl git-core jq curl vim && apt-get clean
 
 # Install the Google Cloud SDK.
 ENV HOME /
