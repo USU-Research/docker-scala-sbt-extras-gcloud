@@ -10,7 +10,7 @@ RUN \
 
 RUN \
   curl -s https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt > /usr/local/bin/sbt && chmod 0755 /usr/local/bin/sbt && \
-  sbt about -sbt-create -sbt-version 1.1.6 -212
+  sbt about -sbt-create -sbt-version 0.13.17 -212
 
 # Prepare the image.
 ENV DEBIAN_FRONTEND noninteractive
