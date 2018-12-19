@@ -24,6 +24,12 @@ RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash
 RUN mkdir /.ssh
 ENV PATH /google-cloud-sdk/bin:$PATH
 
+# Install the docker client.
+ENV DOCKERVERSION=18.09.0
+RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
+  && tar xzvf docker-${DOCKERVERSION}.tgz --strip 1 -C /usr/local/bin docker/docker \
+  && rm docker-${DOCKERVERSION}.tgz
+
 RUN echo "Europe/Berlin" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 CMD ["/bin/bash"]
