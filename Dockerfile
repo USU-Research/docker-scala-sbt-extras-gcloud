@@ -4,7 +4,7 @@ MAINTAINER USU Software AG
 
 RUN \
   apt-get update && \
-  apt-get install -y -qq --no-install-recommends wget unzip python openssh-client python-openssl git-core jq curl vim && \
+  apt-get install -y -qq --no-install-recommends wget unzip python openssh-client python-openssl git-core jq curl vim nodejs-legacy && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* 
 
