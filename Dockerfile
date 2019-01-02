@@ -4,7 +4,7 @@ MAINTAINER USU Software AG
 
 RUN \
   apt-get update && \
-  apt-get install -y -qq --no-install-recommends wget unzip python openssh-client python-openssl git-core jq curl vim nodejs-legacy && \
+  apt-get install -y -qq --no-install-recommends wget unzip python openssh-client python-openssl git-core jq curl vim gnupg2 && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* 
 
@@ -29,6 +29,10 @@ ENV DOCKERVERSION=18.09.0
 RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
   && tar xzvf docker-${DOCKERVERSION}.tgz --strip 1 -C /usr/local/bin docker/docker \
   && rm docker-${DOCKERVERSION}.tgz
+
+# Install node & npm
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt install -y nodejs && npm install -g npm@6.1.0
 
 RUN echo "Europe/Berlin" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
