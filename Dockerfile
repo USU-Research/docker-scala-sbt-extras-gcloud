@@ -49,6 +49,8 @@ RUN cp $(go env GOPATH)/bin/* /usr/local/bin
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt install -y nodejs && npm install -g npm@6.1.0
 
+RUN curl -LsO https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 && chmod +x jq-linux64 && mv jq-linux64 /usr/local/bin/jq
+
 RUN echo "Europe/Berlin" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
 CMD ["/bin/bash"]
