@@ -6,7 +6,7 @@ RUN echo "deb http://deb.debian.org/debian stretch-backports main" >> /etc/apt/s
 
 RUN \
   apt-get update && \
-  apt-get install -y -qq --no-install-recommends wget unzip python openssh-client python-openssl git-core jq curl vim gnupg2 procps && \
+  apt-get install -y -qq --no-install-recommends wget unzip python openssh-client python-openssl git-core jq curl vim gnupg2 procps zip && \
   apt-get install -y -t stretch-backports golang-go && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
