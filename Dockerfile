@@ -41,9 +41,8 @@ RUN curl -LsO https://storage.googleapis.com/kubernetes-helm/$HELM_ARCHIVE && ta
 
 RUN curl -LsO https://github.com/openfaas/faas-cli/releases/download/${FAAS_CLI_VERSION}/faas-cli && chmod +x faas-cli && cp faas-cli /usr/local/bin
 
-RUN go version
-RUN go get -u sigs.k8s.io/kind
-RUN cp $(go env GOPATH)/bin/* /usr/local/bin
+RUN wget -q -O /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/0.2.1/kind-linux-amd64
+RUN chmod +x /usr/local/bin/kind
 
 # Install node & npm
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
