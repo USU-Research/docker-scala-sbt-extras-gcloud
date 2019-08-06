@@ -33,7 +33,7 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${
   && tar xzvf docker-${DOCKERVERSION}.tgz --strip 1 -C /usr/local/bin docker/docker \
   && rm docker-${DOCKERVERSION}.tgz
 
-ENV HELM_ARCHIVE=helm-v2.12.1-linux-amd64.tar.gz \
+ENV HELM_ARCHIVE=helm-v2.14.3-linux-amd64.tar.gz \
     HELM_DIR=linux-amd64 \
     FAAS_CLI_VERSION=0.8.5
 
